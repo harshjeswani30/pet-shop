@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  image       String?
+  breeds      Breed[]
+  pets        Pet[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Breed {
+  id         String   @id @default(cuid())
+  name       String
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+  pets       Pet[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Pet {
+  id           String         @id @default(cuid())
+  name         String
+  description  String
+  price        Float
+  oldPrice     Float?
+  categoryId   String
+  category     Category       @relation(fields: [categoryId], references: [id])
+  breedId      String
+  breed        Breed          @relation(fields: [breedId], references: [id])
+  sellerId     String
+  seller       Seller         @relation(fields: [sellerId], references: [id])
+  images       PetImage[]
+  attributes   PetAttribute[]
+  reviews      Review[]
+  isFeatured   Boolean        @default(false)
+  isNewArrival Boolean        @default(false)
+  isHighSold   Boolean        @default(false)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model PetAttribute {
+  id    String @id @default(cuid())
+  type  String // Coat Type, Color, Eye Color, Gender, Adoptive Type, Age, Certificate Type, Requirement
+  value String
+  petId String
+  pet   Pet    @relation(fields: [petId], references: [id], onDelete: Cascade)
+}
+
+model Seller {
+  id          String   @id @default(cuid())
+  name        String
+  email       String   @unique
+  phone       String?
+  address     String?
+  description String?
+  image       String?
+  rating      Float    @default(0)
+  pets        Pet[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model PetImage {
+  id    String @id @default(cuid())
+  url   String
+  petId String
+  pet   Pet    @relation(fields: [petId], references: [id], onDelete: Cascade)
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  rating    Int
+  comment   String
+  userName  String
+  petId     String
+  pet       Pet      @relation(fields: [petId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model Newsletter {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  createdAt DateTime @default(now())
+}
