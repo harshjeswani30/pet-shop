@@ -57,6 +57,28 @@ enum SellerVerificationStatus {
   REJECTED
 }
 
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  FLAGGED
+}
+
+enum ReportStatus {
+  PENDING
+  INVESTIGATING
+  RESOLVED
+  DISMISSED
+}
+
+enum ReportReason {
+  SPAM
+  INAPPROPRIATE
+  FAKE
+  HARASSMENT
+  OTHER
+}
+
 model Category {
   id          String   @id @default(cuid())
   name        String
