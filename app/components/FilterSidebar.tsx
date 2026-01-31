@@ -8,8 +8,20 @@ const FILTER_OPTIONS = {
   gender: ['Male', 'Female', 'Pair'],
   adoptiveType: ['Tamed', 'Wild'],
   certificate: ['With KCI', 'With INKC', 'Without KCI/INKC'],
-  coatTypes: ['Short', 'Long', 'Double Coat', 'Curly', 'Smooth', 'WireHaired', 'Wooly'],
-  colors: ['White', 'Black', 'Golden', 'Brown', 'Grey', 'Black & Tan', 'Pure Black'],
+  coatTypes: [
+    'Curly', 'Curly/Plush', 'Dense', 'Double', 'Double Coat', 
+    'Double Coated', 'Flat', 'Long', 'Long and fine', 'Long and silky', 
+    'Medium', 'Short', 'Short/Smooth', 'Short Coat', 'Silky', 
+    'Smooth', 'Standard', 'Super Wooly', 'WireHaired', 'Wooly'
+  ],
+  colors: [
+    'Albino', 'Apricot', 'Black', 'Black & Tan', 'Blue & White', 
+    'Brown', 'Chocolate and White', 'Cream', 'Golden', 'Grey', 
+    'Grizzle', 'Merle', 'Pure Black', 'Red', 'Red & White', 
+    'Red Gold', 'Salt & Pepper', 'White', 'White Brown'
+  ],
+  requirement: ['Male', 'Female', 'Pair'],
+  eyeColor: ['Normal', 'Blue']
 };
 
 export default function FilterSidebar() {
@@ -23,6 +35,10 @@ export default function FilterSidebar() {
     color: searchParams.get('color') || '',
     minPrice: searchParams.get('minPrice') || '',
     maxPrice: searchParams.get('maxPrice') || '',
+    adoptiveType: searchParams.get('adoptiveType') || '',
+    certificate: searchParams.get('certificate') || '',
+    requirement: searchParams.get('requirement') || '',
+    eyeColor: searchParams.get('eyeColor') || '',
   });
 
   const handleFilterChange = (name: string, value: string) => {
@@ -74,6 +90,8 @@ export default function FilterSidebar() {
         { name: 'color', label: 'Color', options: FILTER_OPTIONS.colors },
         { name: 'adoptiveType', label: 'Adoptive Type', options: FILTER_OPTIONS.adoptiveType },
         { name: 'certificate', label: 'Certificate', options: FILTER_OPTIONS.certificate },
+        { name: 'requirement', label: 'Requirement', options: FILTER_OPTIONS.requirement },
+        { name: 'eyeColor', label: 'Eye Color', options: FILTER_OPTIONS.eyeColor },
       ].map((section) => (
         <div key={section.name}>
           <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900 mb-4">{section.label}</h3>

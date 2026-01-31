@@ -23,6 +23,27 @@ const posts = [
     image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1000&auto=format&fit=crop',
     date: 'Jan 20, 2024',
   },
+  {
+    slug: 'exotic-pet-legalities-india',
+    title: 'Exotic Pet Legalities in India: What You Need to Know',
+    excerpt: 'A guide to which exotic animals are legal to keep as pets in India and the necessary permissions.',
+    image: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=1000&auto=format&fit=crop',
+    date: 'Jan 15, 2024',
+  },
+  {
+    slug: 'bird-feeding-guide',
+    title: 'The Ultimate Bird Feeding & Nutrition Guide',
+    excerpt: 'Proper nutrition is key to a long and healthy life for your feathered friends.',
+    image: 'https://images.unsplash.com/photo-1522850949506-5855141de465?q=80&w=1000&auto=format&fit=crop',
+    date: 'Jan 10, 2024',
+  },
+  {
+    slug: 'pet-grooming-at-home',
+    title: 'DIY Pet Grooming: Tips and Tricks',
+    excerpt: 'Save money and bond with your pet by learning how to groom them at home.',
+    image: 'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=1000&auto=format&fit=crop',
+    date: 'Jan 05, 2024',
+  },
 ];
 
 export default function BlogPage() {

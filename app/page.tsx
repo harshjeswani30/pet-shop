@@ -10,8 +10,8 @@ const features = [
     icon: ShieldCheck,
   },
   {
-    name: 'ISO Certified',
-    description: 'Our marketplace is recognized for maintaining high standards in pet commerce.',
+    name: 'Trusted Brand',
+    description: 'Recognized as India\'s most trusted pet marketplace for quality and health.',
     icon: Award,
   },
   {
@@ -19,6 +19,13 @@ const features = [
     description: 'Every pet listed undergoes a thorough health examination by qualified veterinarians.',
     icon: Stethoscope,
   },
+];
+
+const categories = [
+  { name: 'Dogs & Puppies', slug: 'dogs-and-puppies', image: 'https://images.unsplash.com/photo-1517849845537-4d257902454a' },
+  { name: 'Cats & Kittens', slug: 'cats-and-kittens', image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba' },
+  { name: 'Birds', slug: 'birds', image: 'https://images.unsplash.com/photo-1522850949506-5855141de465' },
+  { name: 'Exotic Animals', slug: 'exotic-animals', image: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7' },
 ];
 
 const testimonials = [
@@ -78,13 +85,13 @@ export default function Home() {
             <Link href="/shop" className="text-primary-600 font-semibold hover:underline">View All</Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {['Dogs & Puppies', 'Cats & Kittens', 'Birds', 'Exotic'].map((cat, i) => (
-              <Link key={cat} href={`/categories/${cat.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`} className="group relative overflow-hidden rounded-xl bg-white shadow-md hover:shadow-xl transition">
-                <div className="aspect-square bg-gray-200">
-                  {/* Placeholder for images */}
+            {categories.map((cat, i) => (
+              <Link key={cat.slug} href={`/categories/${cat.slug}`} className="group relative overflow-hidden rounded-xl bg-white shadow-md hover:shadow-xl transition h-80">
+                <div className="relative h-2/3 w-full bg-gray-200">
+                  <img src={cat.image} alt={cat.name} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                 </div>
-                <div className="p-6">
-                  <h3 className="font-bold text-lg group-hover:text-primary-600 transition">{cat}</h3>
+                <div className="p-6 h-1/3 flex items-center">
+                  <h3 className="font-bold text-lg group-hover:text-primary-600 transition">{cat.name}</h3>
                 </div>
               </Link>
             ))}

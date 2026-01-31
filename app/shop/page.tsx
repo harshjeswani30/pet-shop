@@ -21,7 +21,10 @@ export default async function ShopPage() {
   return (
     <div className="bg-gray-50 min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-8">Browse Pet Categories</h1>
+        <div className="flex justify-between items-end mb-8">
+          <h1 className="text-4xl font-extrabold text-gray-900">Browse Pet Categories</h1>
+          <Link href="/shop/all" className="text-primary-600 font-bold hover:underline">View All Pets</Link>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {categories.map((category) => (

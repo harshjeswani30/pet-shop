@@ -40,19 +40,21 @@ export default function ProductCard({ pet }: ProductCardProps) {
         <div className="text-sm text-gray-500 mb-3">
           {pet.attributes?.find((a: any) => a.type === 'Age')?.value} • {pet.attributes?.find((a: any) => a.type === 'Gender')?.value}
         </div>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex flex-col">
             <span className="font-bold text-lg text-gray-900">₹{pet.price.toLocaleString()}</span>
             {pet.oldPrice && (
-              <span className="text-sm text-gray-400 line-through">₹{pet.oldPrice.toLocaleString()}</span>
+              <span className="text-xs text-gray-400 line-through">₹{pet.oldPrice.toLocaleString()}</span>
             )}
           </div>
-          <Link 
-            href={`/products/${pet.id}`}
-            className="text-xs font-bold text-primary-600 hover:text-primary-700 uppercase tracking-tighter"
-          >
-            View Details
-          </Link>
+          <div className="flex space-x-2">
+             <Link 
+              href={`/products/${pet.id}`}
+              className="px-3 py-1.5 bg-primary-600 text-white text-[10px] font-bold rounded hover:bg-primary-700 transition uppercase"
+            >
+              Contact
+            </Link>
+          </div>
         </div>
       </div>
     </div>
