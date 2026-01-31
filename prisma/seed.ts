@@ -507,8 +507,9 @@ async function main() {
       data: {
         rating: 5,
         comment: 'Excellent pet, very healthy and well-behaved!',
-        userName: 'Rahul Sharma',
+        reviewerName: 'Rahul Sharma',
         petId: createdPet.id,
+        sellerId: seller1.id,
       },
     })
   }

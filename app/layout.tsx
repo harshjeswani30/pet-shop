@@ -3,12 +3,19 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import { branding } from "@/lib/config/branding";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PetMarket India - Find Healthy Pets & Companions",
-  description: "Enterprise-level pet marketplace in India for selling pets with ethical breeding, vaccination, and vet checks.",
+  title: `${branding.company.name} - ${branding.company.tagline}`,
+  description: branding.company.description,
+  keywords: "pets, dogs, cats, birds, exotic animals, pet marketplace, ethical breeding, India",
+  openGraph: {
+    title: branding.company.name,
+    description: branding.company.description,
+    type: "website",
+  },
 };
 
 export default function RootLayout({
